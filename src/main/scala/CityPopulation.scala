@@ -6,8 +6,9 @@ object CityPopulation extends App {
   //test it with 37
   //test it with 48.5
 
-def temperatureCF(c: Double) ={
-    32 + c*9/5
+
+  def temperatureCF(c: Double, precision: Int=0) ={
+  32 + c*9/5
   }
   println(temperatureCF(36.6))
   println(temperatureCF(37))
@@ -43,7 +44,19 @@ def temperatureCF(c: Double) ={
    * @return number of years to reach , -1 if not reachable
    */
   def getCityYear(p0: Int, percentage: Double, delta: Int, targetPopulation: Int):Int = {
-    //add some code here....
+    var p0 = 10
+    val percentage = 2
+    val delta = 50
+    val targetPopulation = 30
+
+  while (p0<targetPopulation) {
+  println( (p0 * percentage) - delta)
+    p0+=1
+    if (p0>targetPopulation) {
+      println("-1")
+    }
+
+}
     9000 //FIXME //right now it returns this 9000 all the time
   }
 
