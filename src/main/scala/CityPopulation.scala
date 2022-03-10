@@ -7,12 +7,12 @@ object CityPopulation extends App {
   //test it with 48.5
 
 
-  def temperatureCF(c: Double, precision: Int=0) ={
-  32 + c*9/5
+  def temperatureCToF(c: Double) = {
+    32 + c*9/5
   }
-  println(temperatureCF(36.6))
-  println(temperatureCF(37))
-  println(temperatureCF(48.5))
+  println(temperatureCToF(36.6))
+  println(temperatureCToF(37))
+  println(temperatureCToF(48.5))
 
 
   //TODO 2nd main TASK - not really related to first task
@@ -50,7 +50,7 @@ object CityPopulation extends App {
     val targetPopulation = 30
 
   while (p0<targetPopulation) {
-  println( (p0 * percentage) - delta)
+  println ((p0 * percentage) - delta)
     p0+=1
     if (p0>targetPopulation) {
       println("-1")
