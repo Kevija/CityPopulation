@@ -1,3 +1,5 @@
+import jdk.jfr.Percentage
+
 object CityPopulation extends App {
   //easy function
   //TODO write a function (name it yourself) to calculate Farenheit from Celsius
@@ -7,8 +9,8 @@ object CityPopulation extends App {
   //test it with 48.5
 
 
-  def temperatureCToF(c: Double, precision: Int=2) = {
-    MyUtil.myRound(32 + c*9/5, precision)
+  def temperatureCToF(celsius: Double, precision: Int=2) = {
+    MyUtil.myRound(32 + celsius*9/5, precision)
   }
   println(temperatureCToF(36.6))
   println(temperatureCToF(37))
@@ -44,20 +46,18 @@ object CityPopulation extends App {
    * @return number of years to reach , -1 if not reachable
    */
   def getCityYear(p0: Int, percentage: Double, delta: Int, targetPopulation: Int):Int = {
-    var p0 = 10
-    val percentage = 2
-    val delta = 50
-    val targetPopulation = 30
+    var numberOfYears = 0
+    var currentPop = p0
+    def nextYearPop (current: Int, percentage: Double, delta: Int):Int = (current*(1+percentage/100)+delta).toInt
 
-  while (p0<targetPopulation) {
-  println ((p0 * percentage) - delta)
-    p0+=1
-    if (p0>targetPopulation) {
-      println("-1")
+    var newPopulation = nextYearPop(currentPop, percentage, delta)
+
+    while (currentPop <= newPopulation && currentPop < targetPopulation) {
+      numberOfYears += 1
+      currentPop = newPopulation
+      newPopulation = nextYearPop(currentPop, percentage, delta)
     }
-
-}
-    9000 //FIXME //right now it returns this 9000 all the time
+    numberOfYears //right now it returns this 9000 all the time
   }
 
   println(getCityYear(1000,2,50,1200)) // should print 3
