@@ -7,8 +7,8 @@ object CityPopulation extends App {
   //test it with 48.5
 
 
-  def temperatureCToF(c: Double) = {
-    32 + c*9/5
+  def temperatureCToF(c: Double, precision: Int=2) = {
+    MyUtil.myRound(32 + c*9/5, precision)
   }
   println(temperatureCToF(36.6))
   println(temperatureCToF(37))
